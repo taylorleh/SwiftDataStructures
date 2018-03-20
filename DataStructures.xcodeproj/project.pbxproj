@@ -10,6 +10,7 @@
 		34D80B12205BB88F0061C1FB /* DataStructures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34D80B08205BB88F0061C1FB /* DataStructures.framework */; };
 		34D80B17205BB88F0061C1FB /* DataStructuresTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D80B16205BB88F0061C1FB /* DataStructuresTests.swift */; };
 		34D80B19205BB88F0061C1FB /* DataStructures.h in Headers */ = {isa = PBXBuildFile; fileRef = 34D80B0B205BB88F0061C1FB /* DataStructures.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		34D80B23205BB8A80061C1FB /* TWLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D80B22205BB8A80061C1FB /* TWLinkedList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		34D80B11205BB88F0061C1FB /* DataStructuresTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataStructuresTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D80B16205BB88F0061C1FB /* DataStructuresTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructuresTests.swift; sourceTree = "<group>"; };
 		34D80B18205BB88F0061C1FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34D80B22205BB8A80061C1FB /* TWLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWLinkedList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				34D80B0B205BB88F0061C1FB /* DataStructures.h */,
 				34D80B0C205BB88F0061C1FB /* Info.plist */,
+				34D80B22205BB8A80061C1FB /* TWLinkedList.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					34D80B07205BB88F0061C1FB = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					34D80B10205BB88F0061C1FB = {
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D80B23205BB8A80061C1FB /* TWLinkedList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +339,7 @@
 		34D80B1D205BB88F0061C1FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -346,6 +352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.lehman.DataStructures;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -354,6 +361,7 @@
 		34D80B1E205BB88F0061C1FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -374,6 +382,7 @@
 		34D80B20205BB88F0061C1FB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DataStructuresTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -387,6 +396,7 @@
 		34D80B21205BB88F0061C1FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DataStructuresTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

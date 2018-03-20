@@ -25,7 +25,7 @@ class DataStructuresTests: XCTestCase {
   
   
   func testAddToTail() {
-    let list = LinkedList<Int>()
+    let list = TWLinkedList<Int>()
     list.appendValue(withValue: 1)
     list.appendValue(withValue: 2)
     list.appendValue(withValue: 3)
@@ -37,7 +37,7 @@ class DataStructuresTests: XCTestCase {
   
   
   func testAppendValues() {
-    let sut = LinkedList<Int>()
+    let sut = TWLinkedList<Int>()
     sut.appendValues(values: &intListValues!)
     
     XCTAssertEqual(sut.head!.value, 2)
@@ -48,7 +48,7 @@ class DataStructuresTests: XCTestCase {
   }
   
   func testInsertOnEmpty() {
-    let sut = LinkedList<Int>()
+    let sut = TWLinkedList<Int>()
     sut.insert(10, at: 0)
     XCTAssertEqual(sut.count, 1)
     XCTAssertEqual(sut.head?.value, 10)
@@ -94,11 +94,8 @@ class DataStructuresTests: XCTestCase {
   func testRemoveNode() {
     let sut = generateLinkedList(values: &intListValues!)
     
-    //    let removingIndex = arc4random_uniform(UInt32(sut.count))
-    let removingIndex = 0
+    let removingIndex = arc4random_uniform(UInt32(sut.count))
     let removeValue = sut[Int(removingIndex)]
-    
-    print("Going to remove at index \(removingIndex)")
     
     sut.removeNode(atIndex: Int(removingIndex))
     
@@ -122,8 +119,8 @@ class DataStructuresTests: XCTestCase {
   
 }
 
-func generateLinkedList(values: inout Array<Int>) -> LinkedList<Int> {
-  let list = LinkedList<Int>()
+func generateLinkedList(values: inout Array<Int>) -> TWLinkedList<Int> {
+  let list = TWLinkedList<Int>()
   list.appendValues(values: &values)
   return list
 }

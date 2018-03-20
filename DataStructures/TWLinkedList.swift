@@ -8,37 +8,61 @@
 
 import Foundation
 
-public class ListNode<T> {
+public class TWListNode<T>: CustomStringConvertible {
   var value:T
-  var next: ListNode<T>?
+  var next: TWListNode<T>?
   
-  init(_ val: T) {
+  public var description: String {
+    if next != nil {
+      return "\(value)->"
+    } else {
+      return "\(value)->nil"
+    }
+  }
+  
+  public init(_ val: T) {
     self.value = val
   }
 }
 
 
-public class LinkedList<T: Equatable> {
+
+public class TWLinkedList<T: Equatable>: CustomStringConvertible {
+  
+  // MARK: Private Props
+  
+  private var tail: TWListNode<T>?
+  
+  private var counter: Int = 0
+  
   
   // MARK: Public Props
   
   // #pragma mark - public
-  public var head: ListNode<T>?
+  public var head: TWListNode<T>?
   
-  var isEmpty: Bool {
+  public var isEmpty: Bool {
     return count == 0 && head == nil
   }
   
-  var count: Int {
+  public var count: Int {
     return counter
   }
   
-  // MARK: Private Props
-  
-  private var tail: ListNode<T>?
-  
-  private var counter: Int = 0
-  
+  public var description: String {
+    guard head != nil else {
+      return "nil"
+    }
+    var output = ""
+    var front:TWListNode! = head
+    
+    while(front != nil) {
+      output += "\(front.value)\u{2192}"
+      front = front!.next
+    }
+    output += "nil"
+    return output
+  }
   
 
   
@@ -46,7 +70,7 @@ public class LinkedList<T: Equatable> {
   public init(){}
   
   public init(headValue: T) {
-    let newNode = ListNode(headValue)
+    let newNode = TWListNode(headValue)
     head = newNode
     tail = newNode
   }
@@ -55,7 +79,7 @@ public class LinkedList<T: Equatable> {
   /// Access a Node from LL using a subscript
   ///
   /// - Parameter index: desired index of node
-  subscript(index: Int) -> ListNode<T>? {
+  subscript(index: Int) -> TWListNode<T>? {
     return retrieve(atIndex: index)
   }
   
@@ -65,7 +89,7 @@ public class LinkedList<T: Equatable> {
   ///
   /// - Parameter val: value to append
   public func appendValue(withValue val: T) {
-    appendNode(ListNode(val))
+    appendNode(TWListNode(val))
     counter += 1
   }
   
@@ -92,7 +116,7 @@ public class LinkedList<T: Equatable> {
       return false
     }
     
-    var current: ListNode! = head
+    var current: TWListNode! = head
     
     while(current != nil) {
       if target == current.value {
@@ -109,7 +133,7 @@ public class LinkedList<T: Equatable> {
   public func insert(_ element: T, at index: Int) {
     guard !isEmpty else {
       if index == 0 {
-        head = ListNode(element)
+        head = TWListNode(element)
         counter += 1
       }
       return
@@ -121,7 +145,7 @@ public class LinkedList<T: Equatable> {
     }
     
     guard count > 2 else {
-      let newNode = ListNode(element)
+      let newNode = TWListNode(element)
       if index == 0 {
         newNode.next = head
         head = newNode
@@ -132,7 +156,7 @@ public class LinkedList<T: Equatable> {
       return
     }
     
-    let newNode = ListNode(element)
+    let newNode = TWListNode(element)
     
     if index == 0 {
       newNode.next = head
@@ -141,8 +165,8 @@ public class LinkedList<T: Equatable> {
       return
     }
     
-    var current: ListNode! = head!.next
-    var previous: ListNode! = head
+    var current: TWListNode! = head!.next
+    var previous: TWListNode! = head
     var localIndex: Int = 1
     
     while(current != nil) {
@@ -160,12 +184,12 @@ public class LinkedList<T: Equatable> {
   }
   
   
-  public func retrieve(atIndex index: Int) -> ListNode<T>? {
+  public func retrieve(atIndex index: Int) -> TWListNode<T>? {
     guard head != nil, index < count else {
       return nil
     }
     
-    var current: ListNode! = head
+    var current: TWListNode! = head
     var position = 0
     
     while(index != position) {
@@ -196,8 +220,8 @@ public class LinkedList<T: Equatable> {
       return
     }
     
-    var current: ListNode<T>! = head
-    var previous: ListNode = current
+    var current: TWListNode<T>! = head
+    var previous: TWListNode = current
     var position = 0;
     
     while(position != index) {
@@ -217,7 +241,7 @@ public class LinkedList<T: Equatable> {
   /// values exist for head and tail, new node is set to these values
   ///
   /// - Parameter val: The node to append the the tail
-  private func appendNode(_ val: ListNode<T>) {
+  private func appendNode(_ val: TWListNode<T>) {
     guard head != nil else {
       head = val
       tail = val
